@@ -329,6 +329,7 @@ class AccountsController(TransactionBase):
 		# Determine if drop ship applies
 		is_drop_ship = self.doctype in {
 			"Purchase Order",
+			"Purchase Invoice",
 			"Sales Order",
 			"Sales Invoice",
 		} and self.is_drop_ship(self.items)
@@ -4045,8 +4046,8 @@ def update_child_qty_rate(
 			)
 
 		qty_limits = {
-			"Sales Order": ("delivered_qty", _("Cannot set quantity less than delivered quantity")),
-			"Purchase Order": ("received_qty", _("Cannot set quantity less than received quantity")),
+			"Sales Order": ("delivered_qty", _("Cannot set quantity less than delivered quantity.")),
+			"Purchase Order": ("received_qty", _("Cannot set quantity less than received quantity.")),
 		}
 
 		if parent_doctype in qty_limits:
